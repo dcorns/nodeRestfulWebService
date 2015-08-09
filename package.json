@@ -1,0 +1,25 @@
+{
+  "name": "node-restful-web-service",
+  "version": "1.0.0",
+  "description": "A simple node restful web service",
+  "main": "service.js",
+  "scripts": {
+    "test": "testservice.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dcorns/nodeRestfulWebService"
+  },
+  "keywords": [
+    "restful",
+    "node",
+    "web",
+    "service"
+  ],
+  "author": "Dale Corns",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dcorns/nodeRestfulWebService/issues"
+  },
+  "homepage": "https://github.com/dcorns/nodeRestfulWebService"
+}

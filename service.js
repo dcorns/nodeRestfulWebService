@@ -24,10 +24,12 @@ function convertnumbase(fromBase, toBase, value){
   var badFrombase = false;
   checkValue.forEach(function(item){
     console.log(fromBase, item);
-    if(item >= fromBase) {
+    if(parseInt(item, 10) >= parseInt(fromBase, 10)) {
       badFrombase = true;
+      console.log('bad: ' + item, fromBase)
     }
   });
+  console.log(badFrombase);
   if(badFrombase) return 'err';
   var result = '';
   if(value === '0') result = value;
@@ -55,6 +57,6 @@ http.createServer(function(req, res){
   //console.dir(res.writeHead);
   //res.writeHead(200, {'Content-Type': 'text/plain'});
 
-}).listen(5000, '127.0.0.1');
+}).listen(process.env.PORT || 5000, '127.0.0.1');
 
 console.log('Server up, localhost:5000');

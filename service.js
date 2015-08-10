@@ -19,7 +19,16 @@ function convert(ct, cF, cT, cV){
 }
 
 function convertnumbase(fromBase, toBase, value){
-  //var functionName = fromNumBase + toNumBase,
+  if(!fromBase || !toBase || !value) return 'err';
+  var checkValue = value.split('');
+  var badFrombase = false;
+  checkValue.forEach(function(item){
+    console.log(fromBase, item);
+    if(item >= fromBase) {
+      badFrombase = true;
+    }
+  });
+  if(badFrombase) return 'err';
   var result = '';
   if(value === '0') result = value;
   value = parseInt(value, fromBase);
@@ -36,11 +45,15 @@ http.createServer(function(req, res){
   var convertType = cmd[1], convertFrom = cmd[2], convertTo = cmd[3], convertValue = cmd[4];
   var result = convert ? convert(convertType, convertFrom, convertTo, convertValue) : 'err';
   if (result !== 'err'){
+    res.statusCode = 200;
     res.end('' + result);
-  }else{
-
   }
-  res.writeHead(200, {'Content-Type': 'text/plain'});
+  else{
+    res.statusCode = 400;
+    res.end('error');
+  }
+  //console.dir(res.writeHead);
+  //res.writeHead(200, {'Content-Type': 'text/plain'});
 
 }).listen(5000, '127.0.0.1');
 

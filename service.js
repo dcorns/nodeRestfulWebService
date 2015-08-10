@@ -24,14 +24,22 @@ function convertnumbase(fromNumBase, toNumBase, value){
     //fix this converted to work when time permits
     decbin: function(v){
       var result = '';
+      if(value === '0') result = value;
       while(value >= 2){
-        result = result + value % 2;
-        value = (value / 2).toFixed(0);
+        result = value % 2 + result;
+        value = Math.floor(value / 2);
       }
+      if(value == 1) result = 1 + result;
       return result;
     },
     bindec: function(v){
-      return '32';
+      var x = 0, result = 0;
+      v = v.split('');
+      v.forEach(function(cv, idx, ary){
+        result = x * 2 + parseInt(cv);
+        x = result;
+      });
+      return result;
     }
   };
   if(numBaseConvert[functionName]){

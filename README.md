@@ -7,5 +7,5 @@ Make are rest request to the server of the form http://server.com/<conversion ty
 Current conversion types:
 numberbase: fromBaseNumber/ toBaseNumber/ value to convert
 The following example is requesting that base10(decimal) 32 be converted to base2(binary) so the service will return 100000: 
-`http://webhost/10/2/32`
+`http://webhost/numberbase/10/2/32`
 Currently numberbase will only handle base conversions for base10 and below.
